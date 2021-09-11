@@ -55,17 +55,36 @@ public class TrakData {
 				
 				// read the track a point at a time
 				
-				for (int i = 0; i < numPointsInTrack; i++) {
+				for (int pt = 0; pt < numPointsInTrack; pt++) {
 					
-					for (int j = 0; j < numScalarsPerPoint; j++) {
+					// read all the scalars associated with one point in the track
 					
+					for (int sc = 0; sc < numScalarsPerPoint; sc++) {
+					
+						// note that in here:
+						
+						// sc == 0 : x coordinate of this one point in the track
+						// sc == 1 : y coordinate of this one point in the track
+						// sc == 2 : z coordinate of this one point in the track
+						// sc == 3 : 1st scalar of this one point in the track
+						// sc == 4 : 2nd scalar of this one point in the track
+						// etc.   : etc.
+						
 						// throwing away data for now
 				
 						TrakUtils.readFloat(source, dataIsLittleEndian);
 					}
 				}
 				
-				for (int j = 0; j < numPropertiesPerTrack; j++) {
+				// read the properties associated with this one track
+				
+				for (int prop = 0; prop < numPropertiesPerTrack; prop++) {
+					
+					// note that in here:
+					
+					// prop == 0 : 1st property of whole track
+					// prop == 1 : 2nd property of whole track
+					// etc.      : etc.
 					
 					// throwing away data for now
 					
