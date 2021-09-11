@@ -40,7 +40,31 @@ public class TrakData {
 		
 				// read a track
 				
-				int numPointsInTrack = TrakUtils.readInt(source, dataIsLittleEndian);
+				int numPointsInTrack = 0;
+
+				try {
+					
+					numPointsInTrack = TrakUtils.readInt(source, dataIsLittleEndian);
+					
+				} catch (IOException e) {
+					
+					// assume we could not read next item since data source is at end
+					
+					// so return success
+					
+					if (trackSize == DIFFERENCES_EXIST) {
+						
+						stream.println("Source has a varying number of points per track.");
+					}
+					else {
+						
+						stream.println("Source has a fixed number of points per track: " + trackSize);
+					}
+
+					System.out.println("Scanned "+tracksSoFar+" tracks.");
+					
+					return;
+				}
 				
 				if (trackSize == -1) {
 				
@@ -97,16 +121,9 @@ public class TrakData {
 				
 			} catch (Exception e) {
 
-				if (trackSize == DIFFERENCES_EXIST) {
-					
-					stream.println("Source has a varying number of points per track.");
-				}
-				else {
-					
-					stream.println("Source has a fixed number of points per track: " + trackSize);
-				}
-
-				System.out.println("Scanned "+tracksSoFar+" tracks.");
+				// dies mid track : assume it is some weird error
+				
+				System.out.println("Unknown error: " + e.getMessage() + " Exiting.");
 				
 				return;
 			}
