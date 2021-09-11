@@ -101,6 +101,8 @@ public class TrakData {
 				}
 
 				System.out.println("Scanned "+tracksSoFar+" tracks.");
+				
+				return;
 			}
 		}
 	}
