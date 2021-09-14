@@ -94,9 +94,10 @@ public class TrakData {
 						// sc == 4 : 2nd scalar of this one point in the track
 						// etc.   : etc.
 						
-						// throwing away data for now
-				
-						TrakUtils.readFloat(source, dataIsLittleEndian);
+						@SuppressWarnings("unused")
+						float scalar = TrakUtils.readFloat(source, dataIsLittleEndian);
+
+						// YOUR JOB: do something with this scalar value
 					}
 				}
 				
@@ -109,10 +110,11 @@ public class TrakData {
 					// prop == 0 : 1st property of whole track
 					// prop == 1 : 2nd property of whole track
 					// etc.      : etc.
-					
-					// throwing away data for now
-					
-					TrakUtils.readFloat(source, dataIsLittleEndian);
+
+					@SuppressWarnings("unused")
+					float property = TrakUtils.readFloat(source, dataIsLittleEndian);
+
+					// YOUR JOB: do something with this property value
 				}
 				
 				// stream.println("Just read track "+tracksSoFar);
