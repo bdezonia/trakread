@@ -53,7 +53,7 @@ public class TrakUtils {
 
 	public static String readString(DataInput source, int maxChars) throws IOException {
 		
-		String s = "";
+		StringBuilder sb = new StringBuilder();
 		
 		boolean done = false;
 		
@@ -69,11 +69,11 @@ public class TrakUtils {
 				
 				else
 				
-					s += (char) ch;
+					sb.append( (char) ch );
 			}
 		}
 		
-		return s;
+		return sb.toString();
 	}
 
 	public static byte readByte(DataInput source) throws IOException {
